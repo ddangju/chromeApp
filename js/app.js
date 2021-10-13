@@ -8,8 +8,14 @@ if (localUser === null) {
   loginForm.classList.remove("hidden");
   loginForm.addEventListener("submit", handleClick);
 } else {
+  painting(localUser);
+  // greeting.classList.remove("hidden");
+  // greeting.innerText = "Hello, " + localUser;
+}
+
+function painting(username) {
   greeting.classList.remove("hidden");
-  greeting.innerText = "Hello, " + localUser;
+  greeting.innerText = `Hello, ${username}`;
 }
 
 function handleClick(event) {
@@ -17,6 +23,7 @@ function handleClick(event) {
   event.preventDefault();
   localStorage.setItem("userName", userBlah);
   loginForm.classList.add("hidden");
-  greeting.innerText = "Hello, " + userBlah;
-  greeting.classList.remove("hidden");
+  painting(userBlah);
+  // greeting.innerText = "Hello, " + userBlah;
+  // greeting.classList.remove("hidden");
 }
