@@ -14,20 +14,28 @@ let toDos = [];
 //   console.log(list);
 //   todoList.append(list);
 // }
-function saveTodo(save) {
-  console.log(save);
+function saveTodo() {
+  // console.log(save);
   localStorage.setItem("todo", JSON.stringify(toDos));
 }
 
 function handleClick(event) {
   const li = event.target.parentElement;
+  console.log(li.id);
+  toDos = toDos.filter((item) => item.id !== parseInt(li.id));
   li.remove();
+  saveTodo();
+
+  //삭제후 saveTodo함수 호출하면서
 }
 
 function paintTodo(todo) {
+  console.log(todo, "<<<<<<todo");
   const list = document.createElement("li");
+  list.id = todo.id;
+  console.log(list);
   const span = document.createElement("span");
-  span.innerText = todo;
+  span.innerText = todo.text;
 
   const btn = document.createElement("button");
   btn.innerText = "button";
@@ -42,8 +50,12 @@ function handleSubmit(e) {
   e.preventDefault();
   const newTodo = todoInput.value;
   todoInput.value = "";
-  toDos.push(newTodo);
-  paintTodo(newTodo);
+  const newObj = {
+    text: newTodo,
+    id: Date.now(),
+  };
+  toDos.push(newObj);
+  paintTodo(newObj);
   saveTodo(newTodo);
   //비워지기전에 inputValue읙 값을 함수 인자로 넣어준다.
 }
