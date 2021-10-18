@@ -15,6 +15,8 @@ const bgImage = new Image();
 
 bgImage.src = `img/${changeImg}`;
 
+console.log(bgImage.src, "gd");
+
 bgImage.className = "bg";
 
 document.body.appendChild(bgImage);

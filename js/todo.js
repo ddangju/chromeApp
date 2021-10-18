@@ -15,33 +15,27 @@ let toDos = [];
 //   todoList.append(list);
 // }
 function saveTodo() {
-  // console.log(save);
   localStorage.setItem("todo", JSON.stringify(toDos));
 }
 
 function handleClick(event) {
   const a = event.target.parentElement;
-  // console.log(li.id, "나li");
   console.log(a.parentElement);
   a.remove();
   console.log(a.parentElement);
-  // console.log(a, 2);
   toDos = toDos.filter((item) => item.id !== parseInt(a.id));
   saveTodo();
-
-  //삭제후 saveTodo함수 호출하면서
 }
 
 function paintTodo(todo) {
-  // console.log(todo, "<<<<<<todo");
   const list = document.createElement("li");
   list.id = todo.id;
-  // console.log(list);
   const span = document.createElement("span");
+  span.className = "addList";
   span.innerText = todo.text;
 
   const btn = document.createElement("button");
-  btn.innerText = "button";
+  btn.innerText = "Delete";
   btn.addEventListener("click", handleClick);
 
   list.appendChild(span);
@@ -67,14 +61,9 @@ todoForm.addEventListener("submit", handleSubmit);
 
 const saved = localStorage.getItem("todo");
 
-// function hello(item) {
-//   console.log(item, "나함수");
-// }
-
-// console.log(saved, "1");
 if (saved !== null) {
   const parseTodo = JSON.parse(saved);
-  // console.log(parseTodo, "리스트");
+  console.log(parseTodo, "리스트");
   toDos = parseTodo;
   // parseTodo.forEach(hello);
   // parseTodo.forEach((item) => console.log(typeof item, "나아이템"));
