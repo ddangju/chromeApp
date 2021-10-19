@@ -1,5 +1,4 @@
 const clock = document.getElementById("clock");
-// const currentSe = date.getSeconds();
 
 function getClock() {
   const date = new Date();

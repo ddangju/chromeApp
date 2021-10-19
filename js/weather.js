@@ -12,9 +12,13 @@ function success(position) {
       const weather = document.querySelector("#weather span:first-child");
       const city = document.querySelector("#weather span:nth-child(2)");
       const temp = document.querySelector("#weather span:last-child");
-      city.innerText = data.name;
-      weather.innerText = data.weather[0].main;
-      temp.innerText = data.main.temp;
+      city.innerText = `${data.name}/`;
+      // weather.innerText = `${data.weather[0].main}/`;
+      temp.innerText = `🌡${data.main.temp}`;
+      if (data.weather[0].main === "Clear") {
+        return (weather.innerText = `🌝${data.weather[0].main}/`);
+      }
+      // console.log(data.weather, "나날씨");
     })
   );
 }
@@ -23,3 +27,4 @@ function error() {
   alert("실패");
 }
 navigator.geolocation.getCurrentPosition(success, error);
+console.dir(navigator);
