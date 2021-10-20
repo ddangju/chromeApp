@@ -20,9 +20,7 @@ function saveTodo() {
 
 function handleClick(event) {
   const a = event.target.parentElement;
-  console.log(a.parentElement);
   a.remove();
-  console.log(a.parentElement);
   toDos = toDos.filter((item) => item.id !== parseInt(a.id));
   saveTodo();
 }
@@ -63,7 +61,7 @@ const saved = localStorage.getItem("todo");
 
 if (saved !== null) {
   const parseTodo = JSON.parse(saved);
-  console.log(parseTodo, "리스트");
+  // console.log(parseTodo, "리스트");
   toDos = parseTodo;
   // parseTodo.forEach(hello);
   // parseTodo.forEach((item) => console.log(typeof item, "나아이템"));
